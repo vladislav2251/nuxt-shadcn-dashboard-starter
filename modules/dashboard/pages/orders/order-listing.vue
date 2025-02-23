@@ -15,8 +15,6 @@ useHead({
             <Heading
                 title="Orders"
                 description="Manage orders (Server side table functionalities.)"
-                label="Add New"
-                href="/dashboard/order/new"
             />
 
             <Separator class="!ml-0 mt-3" />
