@@ -28,6 +28,11 @@ export default defineNuxtModule({
                 path: '/dashboard/product/edit/:id',
                 file: resolve(__dirname, 'pages/products/product-edit.vue'),
             });
+            pages.push({
+                name: 'dashboard-orders',
+                path: '/dashboard/orders',
+                file: resolve(__dirname, 'pages/orders/order-listing.vue'),
+            });
         });
     },
 });
