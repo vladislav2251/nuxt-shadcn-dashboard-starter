@@ -39,7 +39,7 @@ const menuItems = ref<IMenuItems[]>([
     },
     {
         title: 'Orders',
-        url: '/dashboard/orders',
+        url: '/dashboard/order',
         icon: IconPackageSearch,
         isActive: false,
         value: 'dashboard-orders',

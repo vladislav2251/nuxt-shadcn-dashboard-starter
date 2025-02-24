@@ -4,7 +4,7 @@ import SwitchTheme from './switch-theme.vue';
 </script>
 
 <template>
-    <div class="flex items-center gap-2 px-4">
+    <div class="flex items-center justify-between gap-2 px-4">
         <SearchInput />
         <DropdownMenu>
             <DropdownMenuTrigger>
