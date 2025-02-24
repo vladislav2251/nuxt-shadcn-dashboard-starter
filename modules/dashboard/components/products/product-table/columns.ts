@@ -16,7 +16,7 @@ export interface Product {
 export const columns: ColumnDef<Product>[] = [
     {
         accessorKey: 'image',
-        header: () => h('div', { class: 'text-right' }, 'Image'),
+        header: () => h('div', 'Image'),
         cell: ({ row }) => {
             const imageUrl = row.getValue('image');
             return h(Skeleton, { src: imageUrl, class: 'w-16 h-16 object-cover rounded' });
@@ -31,14 +31,14 @@ export const columns: ColumnDef<Product>[] = [
             }, () => ['Name', h(IconArrowUpDown, { class: 'ml-2 h-4 w-4' })]);
         },
         cell: ({ row }) => {
-            return h('div', { class: 'text-right' }, row.getValue('name'));
+            return h('div', row.getValue('name'));
         },
     },
     {
         accessorKey: 'category',
-        header: () => h('div', { class: 'text-right' }, 'Category'),
+        header: () => h('div', 'Category'),
         cell: ({ row }) => {
-            return h('div', { class: 'text-right' }, row.getValue('category'));
+            return h('div', row.getValue('category'));
         },
     },
     {
@@ -56,14 +56,14 @@ export const columns: ColumnDef<Product>[] = [
                 currency: 'USD',
             }).format(price);
 
-            return h('div', { class: 'text-right font-medium' }, formatted);
+            return h('div', { class: 'font-medium' }, formatted);
         },
     },
     {
         accessorKey: 'description',
-        header: () => h('div', { class: 'text-right' }, 'Description'),
+        header: () => h('div', 'Description'),
         cell: ({ row }) => {
-            return h('div', { class: 'text-right' }, row.getValue('description'));
+            return h('div', row.getValue('description'));
         },
     },
     {

@@ -156,7 +156,7 @@ const table = useVueTable({
     <div class="flex flex-wrap items-center gap-4">
         <Input
             class="max-w-[384px]"
-            placeholder="Product name..."
+            placeholder="Search name..."
             :model-value="table.getColumn('name')?.getFilterValue() as string"
             @update:model-value=" table.getColumn('name')?.setFilterValue($event)"
         />
@@ -167,7 +167,7 @@ const table = useVueTable({
         </Button>
     </div>
     <div class="relative flex flex-1">
-        <ScrollArea class="grid h-[calc(80vh-220px)] w-full rounded-md border md:h-[calc(90dvh-200px)]">
+        <ScrollArea class="grid h-[calc(91vh-220px)] w-full rounded-md border md:h-[calc(88vh-200px)]">
             <Table>
                 <TableHeader>
                     <TableRow v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">

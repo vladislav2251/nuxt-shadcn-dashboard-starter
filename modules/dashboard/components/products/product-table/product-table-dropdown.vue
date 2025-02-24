@@ -14,7 +14,7 @@ function toggleAlert() {
 };
 
 function editPush(id: string) {
-    router.push(`/dashboard/product/edit/${id}`);
+    router.push(`/dashboard/product/${id}`);
 };
 </script>
 

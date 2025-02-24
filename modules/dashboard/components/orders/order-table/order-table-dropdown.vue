@@ -14,7 +14,7 @@ function toggleAlert() {
 };
 
 function editPush(id: string) {
-    router.push(`/dashboard/orders/detail/${id}`);
+    router.push(`/dashboard/order/${id}`);
 };
 </script>
 
@@ -30,6 +30,19 @@ function editPush(id: string) {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+                <IconCopy />
+                <span>
+                    Copy payment ID
+                </span>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+                <IconExpand />
+                <span>
+                    Expand
+                </span>
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem @click="editPush(order.id)">
                 <IconEdit />
@@ -50,7 +63,7 @@ function editPush(id: string) {
         <AlertDialogContent>
             <AlertDialogHeader>
                 <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-                <AlertDialogDescription>This action will permanently delete the product</AlertDialogDescription>
+                <AlertDialogDescription>This action will permanently delete the order</AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
                 <Button variant="outline" @click="toggleAlert()">

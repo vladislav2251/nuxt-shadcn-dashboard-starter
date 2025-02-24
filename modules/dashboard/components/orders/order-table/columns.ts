@@ -35,36 +35,41 @@ export const columns: ColumnDef<Order>[] = [
             return h(Button, {
                 variant: 'ghost',
                 onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
-            }, () => ['Name', h(IconArrowUpDown, { class: 'ml-2 h-4 w-4' })]);
+            }, () => ['Name', h(IconArrowUpDown, { class: 'ml-2  h-4 w-4' })]);
         },
         cell: ({ row }) => {
-            return h('div', { class: 'text-right' }, row.getValue('name'));
+            return h('div', row.getValue('name'));
         },
     },
     {
         accessorKey: 'customer',
-        header: () => h('div', { class: 'text-right' }, 'Customer'),
+        header: () => h('div', 'Customer'),
         cell: ({ row }) => {
-            return h('div', { class: 'text-right' }, row.getValue('customer'));
+            return h('div', row.getValue('customer'));
         },
     },
     {
         accessorKey: 'status',
-        header: () => h('div', { class: 'text-right' }, 'Status'),
+        header: () => h('div', 'Status'),
         cell: ({ row }) => {
-            return h('div', { class: 'text-right' }, row.getValue('status'));
+            return h('div', row.getValue('status'));
         },
     },
     {
         accessorKey: 'email',
-        header: () => h('div', { class: 'text-right' }, 'Email'),
+        header: ({ column }) => {
+            return h(Button, {
+                variant: 'ghost',
+                onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
+            }, () => ['Email', h(IconArrowUpDown, { class: 'ml-2  h-4 w-4' })]);
+        },
         cell: ({ row }) => {
-            return h('div', { class: 'text-right' }, row.getValue('email'));
+            return h('div', row.getValue('email'));
         },
     },
     {
         accessorKey: 'date',
-        header: () => h('div', { class: 'text-right' }, 'Date'),
+        header: () => h('div', 'Date'),
         cell: ({ row }) => {
             const date = new Date(row.getValue('date'));
             const formattedDate = new Intl.DateTimeFormat('uk-UA', {
@@ -78,7 +83,12 @@ export const columns: ColumnDef<Order>[] = [
     },
     {
         accessorKey: 'price',
-        header: () => h('div', { class: 'text-right' }, 'Price'),
+        header: ({ column }) => {
+            return h(Button, {
+                variant: 'ghost',
+                onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
+            }, () => ['Price', h(IconArrowUpDown, { class: 'ml-2  h-4 w-4' })]);
+        },
         cell: ({ row }) => {
             const price = Number.parseFloat(row.getValue('price'));
             const formatted = new Intl.NumberFormat('en-US', {
@@ -86,7 +96,7 @@ export const columns: ColumnDef<Order>[] = [
                 currency: 'USD',
             }).format(price);
 
-            return h('div', { class: 'text-right font-medium' }, formatted);
+            return h('div', { class: 'font-medium' }, formatted);
         },
     },
     {

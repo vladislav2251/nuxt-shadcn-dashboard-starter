@@ -147,69 +147,6 @@ const data = ref<Order[]>([
         email: 'katherine.moore@example.com',
         price: 620,
     },
-    {
-        id: '4n5o6p',
-        name: 'Product N',
-        customer: 'Liam Hall',
-        status: 'processing',
-        date: '2024-03-11',
-        email: 'liam.hall@example.com',
-        price: 489,
-    },
-    {
-        id: '5o6p7q',
-        name: 'Product O',
-        customer: 'Mia Allen',
-        status: 'failed',
-        date: '2024-04-19',
-        email: 'mia.allen@example.com',
-        price: 230,
-    },
-    {
-        id: '6p7q8r',
-        name: 'Product P',
-        customer: 'Noah Scott',
-        status: 'success',
-        date: '2024-05-23',
-        email: 'noah.scott@example.com',
-        price: 540,
-    },
-    {
-        id: '7q8r9s',
-        name: 'Product Q',
-        customer: 'Olivia Young',
-        status: 'processing',
-        date: '2024-06-30',
-        email: 'olivia.young@example.com',
-        price: 412,
-    },
-    {
-        id: '8r9s0t',
-        name: 'Product R',
-        customer: 'Paul Nelson',
-        status: 'failed',
-        date: '2024-07-12',
-        email: 'paul.nelson@example.com',
-        price: 295,
-    },
-    {
-        id: '9s0t1u',
-        name: 'Product S',
-        customer: 'Quinn Carter',
-        status: 'success',
-        date: '2024-08-28',
-        email: 'quinn.carter@example.com',
-        price: 475,
-    },
-    {
-        id: '0t1u2v',
-        name: 'Product T',
-        customer: 'Rachel Turner',
-        status: 'processing',
-        date: '2024-09-15',
-        email: 'rachel.turner@example.com',
-        price: 350,
-    },
 ]);
 
 const sorting = ref<SortingState>([]);
@@ -250,12 +187,12 @@ function valueUpdater<T extends Updater<unknown>>(updaterOrValue: T, ref: Ref) {
 <template>
     <Input
         class="max-w-[384px]"
-        placeholder="Product name..."
+        placeholder="Search email..."
         :model-value="table.getColumn('name')?.getFilterValue() as string"
-        @update:model-value=" table.getColumn('name')?.setFilterValue($event)"
+        @update:model-value=" table.getColumn('email')?.setFilterValue($event)"
     />
     <div class="relative flex flex-1">
-        <ScrollArea class="grid h-[calc(80vh-220px)] w-full rounded-md border md:h-[calc(80dvh-200px)]">
+        <ScrollArea class="grid h-[calc(91vh-220px)] w-full rounded-md border md:h-[calc(88vh-200px)]">
             <Table>
                 <TableHeader>
                     <TableRow v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
