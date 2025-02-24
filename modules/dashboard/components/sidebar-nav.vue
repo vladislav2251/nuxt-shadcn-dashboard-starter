@@ -59,11 +59,12 @@ const menuItems = ref<IMenuItems[]>([
 </script>
 
 <template>
-    <Sidebar class="bg-zinc-950" collapsible="icon">
+    <Sidebar class="dark:bg-zinc-950" collapsible="icon">
         <SidebarHeader>
             <div class="flex gap-2 py-2 text-sidebar-accent-foreground">
                 <div class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                    <img src="../../../assets/icons/logo-vercel.svg" alt="logo">
+                    <svg class="dark:fill-white" width="800px" height="800px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M256,48,496,464H16Z" />
+                    </svg>
                 </div>
                 <div class="grid flex-1 text-left text-sm leading-tight">
                     <span class="truncate font-semibold">Shadcn dashboard</span>
@@ -110,7 +111,7 @@ const menuItems = ref<IMenuItems[]>([
                                 as="div"
                                 class="hover:bg-muted hover:text-accent-foreground"
                             >
-                                <Avatar class="h-8 border-zinc-800 border bg-zinc-900 w-8 rounded-lg">
+                                <Avatar class="h-8 border-zinc-800 border dark:bg-zinc-900 w-8 rounded-lg">
                                     <AvatarFallback>
                                         MA
                                     </AvatarFallback>

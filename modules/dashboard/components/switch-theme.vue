@@ -2,6 +2,13 @@
 import { IconMoon } from '#components';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { useColorMode } from '@vueuse/core';
+
+const colorMode = useColorMode();
+
+function toggleTheme() {
+    colorMode.value = colorMode.value === 'dark' ? 'light' : 'dark';
+}
 </script>
 
 <template>
@@ -12,13 +19,13 @@ import { cn } from '@/lib/utils';
             </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent class="min-w-32" align="end">
-            <DropdownMenuItem>
+            <DropdownMenuItem @click="toggleTheme">
                 System
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem @click="toggleTheme">
                 Dark
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem @click="toggleTheme">
                 Light
             </DropdownMenuItem>
         </DropdownMenuContent>
