@@ -73,7 +73,7 @@ function removeFile(index: number) {
     <div class="relative flex flex-col gap-6 overflow-hidden">
         <div
             v-bind="dropzoneProps"
-            class="group relative grid h-52 w-full cursor-pointer hover:bg-zinc-900 place-items-center rounded-lg border-2 border-dashed px-5 py-2.5 text-center transition" :class="[
+            class="group relative grid h-52 w-full cursor-pointer dark:hover:bg-zinc-900 place-items-center rounded-lg border-2 border-dashed px-5 py-2.5 text-center transition" :class="[
                 isDragActive ? 'border-muted-foreground/50' : 'border-muted-foreground/25',
                 isDisabled ? 'pointer-events-none opacity-60' : 'hover:bg-muted/100',
             ]"
