@@ -3,34 +3,22 @@ import { toTypedSchema } from '@vee-validate/zod';
 import { useForm } from 'vee-validate';
 import * as z from 'zod';
 
+import { toast, Toaster } from '~/components/ui/toast';
 import FileUpload from '../../components/file-upload.vue';
 
 const isLoading = ref<boolean>(false);
 const files = ref<File[]>([]);
 
 const MAX_FILE_SIZE = 50 * 1024 * 1024;
-const ACCEPTED_IMAGE_TYPES = [
-    'image/jpeg',
-    'image/jpg',
-    'image/png',
-    'image/webp',
-];
 
 const productCreateFormSchema = toTypedSchema(z.object({
     name: z.string().min(3, { message: 'Product name must be at least 3 characters long' }),
     category: z.string().min(1, { message: 'Please select a category' }),
     price: z.number().positive({ message: 'Price must be greater than 0' }),
-    stock: z.number().int().min(0, { message: 'Stock cannot be negative' }),
+    stock: z.number().int().min(1, { message: 'Stock cannot be negative' }),
     description: z.string().min(10, { message: 'Description must be at least 10 characters' }),
     images: z
-        .array(z.instanceof(File))
-        .refine(files => files.length > 0, { message: 'Please upload at least one image' })
-        .refine(files => files.every((file: File) => file.size <= MAX_FILE_SIZE), {
-            message: `Each file must be less than ${MAX_FILE_SIZE / 1024 / 1024} MB`,
-        })
-        .refine(files => files.every((file: File) => ACCEPTED_IMAGE_TYPES.includes(file.type)), {
-            message: 'Only JPEG, JPG, PNG, and WebP image formats are allowed',
-        }),
+        .any(),
 }));
 
 const { handleSubmit, resetForm } = useForm({
@@ -41,15 +29,19 @@ const { handleSubmit, resetForm } = useForm({
     },
 });
 
-const onSubmit = handleSubmit((values) => {
-    try {
-        console.warn(values);
-    }
-    catch { }
-    finally {
-        resetForm();
-        isLoading.value = false;
-    };
+const onSubmit = handleSubmit(async (_values) => {
+    isLoading.value = true;
+
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
+    resetForm();
+    toast({
+        title: 'Product edited successfully',
+        description: 'The product details have been updated.',
+        duration: 2000,
+    });
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    isLoading.value = false;
 });
 </script>
 
@@ -158,10 +150,13 @@ const onSubmit = handleSubmit((values) => {
                     </FormField>
                 </div>
 
-                <Button>
+                <Button :disabled="isLoading">
+                    <IconLoader2 v-if="isLoading" class="h-4 w-4 animate-spin" />
                     Add product
                 </Button>
             </form>
         </CardContent>
     </Card>
+
+    <Toaster />
 </template>
