@@ -1,8 +1,20 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
+
+defineProps<{
+    order: {
+        id: string;
+    };
+}>();
+const router = useRouter();
 const open = ref<boolean>(false);
 
 function toggleAlert() {
     open.value = !open.value;
+};
+
+function editPush(id: string) {
+    router.push(`/dashboard/orders/detail/${id}`);
 };
 </script>
 
@@ -19,10 +31,10 @@ function toggleAlert() {
         <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem @click="editPush(order.id)">
                 <IconEdit />
                 <span>
-                    Edit
+                    Details
                 </span>
             </DropdownMenuItem>
             <DropdownMenuItem @click="toggleAlert()">

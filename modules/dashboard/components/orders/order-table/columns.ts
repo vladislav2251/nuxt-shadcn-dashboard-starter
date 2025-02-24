@@ -1,7 +1,7 @@
 import type { ColumnDef } from '@tanstack/vue-table';
 import { Button, Checkbox, IconArrowUpDown } from '#components';
 import { h } from 'vue';
-import orderTableDropdown from '../order-table-dropdown.vue';
+import OrderTableDropdown from './order-table-dropdown.vue';
 
 export interface Order {
     id: string;
@@ -95,7 +95,7 @@ export const columns: ColumnDef<Order>[] = [
         cell: ({ row }) => {
             const order = row.original;
 
-            return h(orderTableDropdown, {
+            return h(OrderTableDropdown, {
                 order,
                 onExpand: row.toggleExpanded,
             });

@@ -33,6 +33,11 @@ export default defineNuxtModule({
                 path: '/dashboard/orders',
                 file: resolve(__dirname, 'pages/orders/order-listing.vue'),
             });
+            pages.push({
+                name: 'dashboard-orders-detail',
+                path: '/dashboard/orders/detail/:id',
+                file: resolve(__dirname, 'pages/orders/order-detail.vue'),
+            });
         });
     },
 });
