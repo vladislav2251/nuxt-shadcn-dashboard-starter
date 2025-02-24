@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import type { StepperIndicatorProps } from 'radix-vue';
+import type { StepperIndicatorProps } from 'reka-ui';
 import type { HTMLAttributes } from 'vue';
 import { cn } from '@/lib/utils';
 
-import { StepperIndicator, useForwardProps } from 'radix-vue';
+import { StepperIndicator, useForwardProps } from 'reka-ui';
 import { computed } from 'vue';
 
 const props = defineProps<StepperIndicatorProps & { class?: HTMLAttributes['class'] }>();
@@ -21,14 +21,13 @@ const forwarded = useForwardProps(delegatedProps);
     <StepperIndicator
         v-bind="forwarded"
         :class="cn(
-            'inline-flex items-center justify-center rounded-full text-muted-foreground/50 bg-accent group-data-[state=completed]:text-accent-foreground w-8 h-8',
+            'inline-flex items-center justify-center rounded-full text-muted-foreground/50 bg-accent group-data-[state=completed]:text-accent-foreground w-12 h-12',
             // Disabled
             'group-data-[disabled]:text-muted-foreground group-data-[disabled]:opacity-50',
             // Active
             'group-data-[state=active]:bg-primary group-data-[state=active]:text-primary-foreground',
             // Completed
             'group-data-[state=completed]:bg-primary group-data-[state=completed]:text-primary-foreground',
-            props.class,
         )"
     >
         <slot />

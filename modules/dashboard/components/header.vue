@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Breadcrumbs from './breadcrumbs.vue';
 import UserNav from './user-nav.vue';
 </script>
 
@@ -10,6 +11,10 @@ import UserNav from './user-nav.vue';
             <SidebarTrigger
                 class="-ml-1 [&_svg]:size-[none] [&_svg]:shrink-[none] border-none"
             />
+
+            <Separator orientation="vertical" class="shrink-0 bg-border w-[1px] mr-2 h-4" />
+
+            <Breadcrumbs />
         </div>
 
         <UserNav />
