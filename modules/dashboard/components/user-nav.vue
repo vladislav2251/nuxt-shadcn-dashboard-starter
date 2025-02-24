@@ -17,7 +17,7 @@ import SwitchTheme from './switch-theme.vue';
             <DropdownMenuContent class="min-w-60" align="end">
                 <DropdownMenuLabel>
                     <div class="flex gap-2">
-                        <Avatar class="h-8 bg-[#222222] w-8 rounded-lg">
+                        <Avatar class="h-8 dark:bg-[#222222] w-8 rounded-lg">
                             <AvatarFallback>
                                 MA
                             </AvatarFallback>

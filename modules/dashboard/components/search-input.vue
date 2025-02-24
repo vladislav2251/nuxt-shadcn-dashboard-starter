@@ -25,13 +25,13 @@ const searchItems = ref<ISearchItems[]>([
     },
     {
         title: 'Products',
-        url: '/',
+        url: '/dashboard/overview/products',
         icon: IconShoppingBag,
         value: 'dashboard-products',
     },
     {
         title: 'Orders',
-        url: '/',
+        url: '/dashboard/overview/orders',
         icon: IconPackageSearch,
         value: 'dashboard-orders',
     },
@@ -66,13 +66,13 @@ function handleOpenChange() {
 <template>
     <div>
         <Button
-            class="relative h-9 w-full justify-start rounded-[0.5rem] hover:bg-zinc-900 hover:border-zinc-800  text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-40 lg:w-64"
+            class="relative h-9 w-full justify-start rounded-[0.5rem] dark:hover:bg-zinc-900 dark:hover:border-zinc-800 text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-40 lg:w-64"
             variant="outline"
             @click="open = true"
         >
             <IconSearch class="mr-2 h-4 w-4" />
 
-            Знайти...
+            Search...
 
             <kbd
                 class="pointer-events-none absolute right-[0.3rem] top-[0.3rem] hidden h-6 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex"
@@ -82,10 +82,10 @@ function handleOpenChange() {
         </Button>
 
         <CommandDialog v-model:open="open">
-            <CommandInput placeholder="Введіть команду або пошук..." />
+            <CommandInput placeholder="Enter a command or search..." />
             <CommandList>
-                <CommandEmpty>Результатів не знайдено.</CommandEmpty>
-                <CommandGroup heading="Навігація">
+                <CommandEmpty>No results found.</CommandEmpty>
+                <CommandGroup heading="Navigation">
                     <CommandItem
                         v-for="(element, i) in searchItems"
                         :key="i"

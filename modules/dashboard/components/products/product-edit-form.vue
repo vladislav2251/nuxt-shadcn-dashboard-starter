@@ -56,7 +56,7 @@ const onSubmit = handleSubmit((values) => {
 </script>
 
 <template>
-    <Card class="mx-auto bg-zinc-950 w-full">
+    <Card class="mx-auto dark:bg-zinc-950 w-full">
         <CardHeader>
             <CardTitle class="text-left text-2xl font-bold">
                 Edit Product
