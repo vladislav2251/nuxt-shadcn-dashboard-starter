@@ -74,7 +74,6 @@ export const columns: ColumnDef<Product>[] = [
 
             return h(ProductTableDropdown, {
                 product,
-                onExpand: row.toggleExpanded,
             });
         },
     },

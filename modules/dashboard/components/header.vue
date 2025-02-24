@@ -13,7 +13,6 @@ import UserNav from './user-nav.vue';
             />
 
             <Separator orientation="vertical" class="shrink-0 bg-border w-[1px] mr-2 h-4" />
-
             <Breadcrumbs />
         </div>
 
