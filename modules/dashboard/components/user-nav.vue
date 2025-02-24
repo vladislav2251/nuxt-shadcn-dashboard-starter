@@ -49,7 +49,6 @@ import SwitchTheme from './switch-theme.vue';
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
-
         <SwitchTheme />
     </div>
 </template>

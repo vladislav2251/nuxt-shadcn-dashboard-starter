@@ -107,7 +107,6 @@ export const columns: ColumnDef<Order>[] = [
 
             return h(OrderTableDropdown, {
                 order,
-                onExpand: row.toggleExpanded,
             });
         },
     },

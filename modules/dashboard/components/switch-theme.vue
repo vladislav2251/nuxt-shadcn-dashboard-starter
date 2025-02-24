@@ -1,38 +1,30 @@
 <script setup lang="ts">
-import { useColorMode } from '#imports';
 import { buttonVariants } from '@/components/ui/button';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
-import { MoonIcon, SunIcon } from 'lucide-vue-next';
+import { Icon } from '@iconify/vue';
 
 const colorMode = useColorMode();
-function setTheme(mode: 'system' | 'light' | 'dark') {
-    colorMode.preference = mode;
-}
-
-const themeIcon = computed(() => {
-    if (colorMode.preference === 'system') {
-        return colorMode.value === 'dark' ? MoonIcon : SunIcon;
-    }
-    return colorMode.preference === 'dark' ? MoonIcon : SunIcon;
-});
 </script>
 
 <template>
     <DropdownMenu>
-        <DropdownMenuTrigger>
-            <div :class="cn(buttonVariants({ variant: 'outline', size: 'icon' }))">
-                <component :is="themeIcon" />
+        <DropdownMenuTrigger as-child>
+            <div :class="cn(buttonVariants({ size: 'icon', variant: 'outline' }))" variant="outline">
+                <Icon icon="radix-icons:moon" class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                <Icon icon="radix-icons:sun" class="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                <span class="sr-only">Toggle theme</span>
             </div>
         </DropdownMenuTrigger>
-        <DropdownMenuContent class="min-w-32" align="end">
-            <DropdownMenuItem @click="setTheme('system')">
-                System
+        <DropdownMenuContent align="end">
+            <DropdownMenuItem @click="colorMode.preference = 'light'">
+                Light
             </DropdownMenuItem>
-            <DropdownMenuItem @click="setTheme('dark')">
+            <DropdownMenuItem @click="colorMode.preference = 'dark'">
                 Dark
             </DropdownMenuItem>
-            <DropdownMenuItem @click="setTheme('light')">
-                Light
+            <DropdownMenuItem @click="colorMode.preference = 'system'">
+                System
             </DropdownMenuItem>
         </DropdownMenuContent>
     </DropdownMenu>
