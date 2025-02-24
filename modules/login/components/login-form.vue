@@ -5,11 +5,14 @@ import { cn } from '@/lib/utils';
 import { GithubLogoIcon } from '@radix-icons/vue';
 import { toTypedSchema } from '@vee-validate/zod';
 import { useForm } from 'vee-validate';
+import { useRouter } from 'vue-router';
 import * as z from 'zod';
 
 const isLoading = ref<boolean>(false);
 
 const { toast } = useToast();
+const router = useRouter();
+
 const accountFormSchema = toTypedSchema(z.object({
     email: z.string().min(1, 'Enter a valid email address').email('Enter a valid email address'),
 }));
@@ -21,17 +24,19 @@ const { handleSubmit, resetForm } = useForm({
     },
 });
 
-const onSubmit = handleSubmit((_values) => {
+const onSubmit = handleSubmit(async (_values) => {
     isLoading.value = true;
 
-    setTimeout(() => {
-        isLoading.value = false;
-        resetForm();
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
-        toast({
-            title: '🎉 Signed In Successfully!',
-        });
-    }, 3000);
+    resetForm();
+    toast({
+        title: '🎉 Signed In Successfully!',
+        duration: 5000,
+    });
+
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    await router.push('/dashboard/overview');
 });
 </script>
 

@@ -25,18 +25,23 @@ export default defineNuxtModule({
             });
             pages.push({
                 name: 'dashboard-products-edit',
-                path: '/dashboard/product/edit/:id',
+                path: '/dashboard/product/:id',
                 file: resolve(__dirname, 'pages/products/product-edit.vue'),
             });
             pages.push({
                 name: 'dashboard-orders',
-                path: '/dashboard/orders',
+                path: '/dashboard/order',
                 file: resolve(__dirname, 'pages/orders/order-listing.vue'),
             });
             pages.push({
                 name: 'dashboard-orders-detail',
-                path: '/dashboard/orders/detail/:id',
+                path: '/dashboard/order/:id',
                 file: resolve(__dirname, 'pages/orders/order-detail.vue'),
+            });
+            pages.push({
+                name: 'dashboard-redirect',
+                path: '/dashboard',
+                redirect: '/dashboard/overview',
             });
         });
     },
