@@ -3,6 +3,12 @@ import { cn } from '@/lib/utils';
 import { GithubLogoIcon, StarFilledIcon } from '@radix-icons/vue';
 import { buttonVariants } from '~/components/ui/button';
 
+interface IGitHubResponse {
+    stargazers_count: number;
+};
+
+const { data } = useFetch<IGitHubResponse>('https://api.github.com/repos/MikroTik2/nuxt-shadcn-dashboard-starter');
+
 useHead({
     title: 'Authentication | Sign In',
     meta: [
@@ -53,7 +59,7 @@ useHead({
                     </div>
                     <div class="ml-1 flex items-center gap-1">
                         <StarFilledIcon class="text-muted-foreground group-hover:text-yellow-300" />
-                        <span class="group-hover:text-yellow-200">2764</span>
+                        <span class="group-hover:text-yellow-200">{{ data?.stargazers_count }}</span>
                     </div>
                 </a>
 
